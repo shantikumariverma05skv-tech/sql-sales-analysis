@@ -8,16 +8,14 @@ This project analyzes sales data using SQL to extract actionable business insigh
 - Optional: DB Browser, DBeaver
 
 ## Database Setup
-- **Database Name:** `sales_db`
+- **Database Name:** `sales_db`  
 - **Tables:**
   - `customers` – contains customer information (ID, name, contact, etc.)
   - `orders` – contains order details (order ID, customer ID, product ID, quantity, price, date)
   - `products` – contains product details (product ID, name, category, stock, price)
 
 ## Queries Executed
-Below are some examples of the types of queries used in this project:
-
-1. **Retrieve all data from tables**
+**Retrieve all data from tables:**
 ```sql
 SELECT * FROM customers;
 SELECT * FROM orders;
@@ -37,12 +35,9 @@ SELECT c.name, COUNT(o.order_id) AS total_orders
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 GROUP BY c.name;
--- Top 5 products by sales
 SELECT p.product_name, SUM(o.quantity) AS total_sold
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_sold DESC
 LIMIT 5;
-
-[README.md](https://github.com/user-attachments/files/24978506/README.md)
