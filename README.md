@@ -132,12 +132,15 @@ GROUP BY p.product_name
 ORDER BY total_sold DESC
 LIMIT 5;
 
--- ===============================
-## CONCLUSION
+---
+
+<h2><a class="anchor" id="conclusion"></a>Conclusion</h2>
+
+### CONCLUSION
 -- This project demonstrates the practical use of SQL for real-world business analysis.
 -- It covers essential SQL concepts such as data retrieval, joins, and aggregations.
 -- The project shows how raw sales data can be transformed into meaningful business insights.
 -- ===============================
 
-## AUTHOR
+### AUTHOR
 -- Shanti Kumari Verma
