@@ -131,7 +131,9 @@ JOIN products p ON o.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_sold DESC
 LIMIT 5;
-</>
+END
+
+
 ## Conclusion
 This project demonstrates the practical use of SQL for real-world business analysis. It covers essential SQL concepts such as data retrieval, joins, and aggregations. The project shows how raw sales data can be transformed into meaningful business insights.
 
