@@ -1,44 +1,100 @@
 # SQL Sales Analysis – Business Case Study
 
 ## Overview
-This project analyzes sales data using SQL to extract actionable business insights and support data-driven decision-making.
+This project focuses on analyzing sales data using SQL to extract actionable business insights and support data-driven decision-making. The analysis covers customer behavior, product performance, and overall sales trends.
 
 ## Tools Used
 - SQL (MySQL / PostgreSQL / SQLite)
-- Optional: DB Browser, DBeaver
+- DB Browser / DBeaver
 
 ## Database Setup
 - **Database Name:** `sales_db`
-- **Tables:**
-  - `customers` – contains customer information (ID, name, contact, etc.)
-  - `orders` – contains order details (order ID, customer ID, product ID, quantity, price, date)
-  - `products` – contains product details (product ID, name, category, stock, price)
 
-## Queries Executed
+### Tables
+- `customers` – Stores customer information such as customer ID, name, and contact details.
+- `orders` – Stores order details including order ID, customer ID, product ID, quantity, price, and order date.
+- `products` – Stores product information including product ID, product name, category, stock level, and price.
 
-**Retrieve all data from tables:**
+## SQL Queries Performed
+
+### 1. View complete data from all tables
 ```sql
 SELECT * FROM customers;
 SELECT * FROM orders;
 SELECT * FROM products;
-SELECT o.order_id, c.name, p.product_name, o.quantity, o.price
+SELECT 
+    o.order_id,
+    c.name AS customer_name,
+    p.product_name,
+    o.quantity,
+    o.price
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 JOIN products p ON o.product_id = p.product_id;
 -- Total sales by product category
-SELECT p.category, SUM(o.price * o.quantity) AS total_sales
+SELECT 
+    p.category,
+    SUM(o.price * o.quantity) AS total_sales
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 GROUP BY p.category;
 
--- Count of orders per customer
-SELECT c.name, COUNT(o.order_id) AS total_orders
+-- Total number of orders per customer
+SELECT 
+    c.name AS customer_name,
+    COUNT(o.order_id) AS total_orders
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 GROUP BY c.name;
-SELECT p.product_name, SUM(o.quantity) AS total_sold
+-- Top 5 products by total quantity sold
+SELECT 
+    p.product_name,
+    SUM(o.quantity) AS total_sold
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_sold DESC
 LIMIT 5;
+## Key Business Insights
+- Certain product categories generate significantly higher revenue, indicating strong customer demand.
+- A small group of customers contributes to a large number of orders, highlighting high-value customers.
+- Top-selling products should be prioritized for inventory restocking.
+- Sales trends can be used for future forecasting and planning.
+## How to Run the Project
+
+1. Open your SQL tool (MySQL / PostgreSQL / SQLite).
+2. Create the database:
+```sql
+CREATE DATABASE sales_db;
+USE sales_db;
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    contact VARCHAR(50)
+);
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    stock INT,
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    quantity INT,
+    price DECIMAL(10,2),
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+Conclusion
+
+This project demonstrates the practical use of SQL for real-world business analysis. It covers essential SQL concepts such as data retrieval, table joins, aggregate functions, and analytical queries. The project highlights how raw sales data can be transformed into meaningful business insights that support informed decision-making.
+
+Author
+
+Shanti Kumari Verma
