@@ -8,13 +8,14 @@ This project analyzes sales data using SQL to extract actionable business insigh
 - Optional: DB Browser, DBeaver
 
 ## Database Setup
-- **Database Name:** `sales_db`  
+- **Database Name:** `sales_db`
 - **Tables:**
   - `customers` – contains customer information (ID, name, contact, etc.)
   - `orders` – contains order details (order ID, customer ID, product ID, quantity, price, date)
   - `products` – contains product details (product ID, name, category, stock, price)
 
 ## Queries Executed
+
 **Retrieve all data from tables:**
 ```sql
 SELECT * FROM customers;
