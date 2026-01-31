@@ -91,6 +91,7 @@ CREATE TABLE orders (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
 ## Conclusion
 This project demonstrates the practical use of SQL for real-world business analysis. It covers essential SQL concepts such as data retrieval, joins, aggregations, and analytical queries. The project highlights how raw sales data can be transformed into meaningful business insights that support informed decision-making.
 
