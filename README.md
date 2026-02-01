@@ -136,9 +136,10 @@ LIMIT 5;
 
 ### CONCLUSION
 -- This project demonstrates the practical use of SQL for real-world business analysis.
+
 -- It covers essential SQL concepts such as data retrieval, joins, and aggregations.
+
 -- The project shows how raw sales data can be transformed into meaningful business insights.
--- ===============================
 
 ### AUTHOR
--- Shanti Kumari Verma
+Shanti Kumari Verma
