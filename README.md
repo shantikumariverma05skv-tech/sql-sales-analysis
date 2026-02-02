@@ -19,10 +19,12 @@ This project focuses on analyzing sales data using SQL to extract actionable bus
 
 ### 1. View complete data from all tables
 ```sql
+-- View complete data from all tables
 SELECT * FROM customers;
 SELECT * FROM orders;
 SELECT * FROM products;
-SELECT 
+
+SELECT
     o.order_id,
     c.name AS customer_name,
     p.product_name,
@@ -31,23 +33,36 @@ SELECT
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 JOIN products p ON o.product_id = p.product_id;
--- Total sales by product category
-SELECT 
+
+
+```
+## Total sales by product category
+```sql
+SELECT
     p.category,
     SUM(o.price * o.quantity) AS total_sales
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 GROUP BY p.category;
 
--- Total number of orders per customer
-SELECT 
+```
+
+## Total number of orders per customer
+```sql
+
+SELECT
     c.name AS customer_name,
     COUNT(o.order_id) AS total_orders
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 GROUP BY c.name;
--- Top 5 products by total quantity sold
-SELECT 
+
+```
+
+## Top 5 products by total quantity sold
+```sql
+
+SELECT
     p.product_name,
     SUM(o.quantity) AS total_sold
 FROM orders o
@@ -55,6 +70,8 @@ JOIN products p ON o.product_id = p.product_id
 GROUP BY p.product_name
 ORDER BY total_sold DESC
 LIMIT 5;
+
+```
 ## Key Business Insights
 - Certain product categories generate significantly higher revenue, indicating strong customer demand.
 - A small group of customers contributes to a large number of orders, highlighting high-value customers.
@@ -135,11 +152,11 @@ LIMIT 5;
 ```
 
 ### CONCLUSION
--- This project demonstrates the practical use of SQL for real-world business analysis.
+ This project demonstrates the practical use of SQL for real-world business analysis.
 
--- It covers essential SQL concepts such as data retrieval, joins, and aggregations.
+ It covers essential SQL concepts such as data retrieval, joins, and aggregations.
 
--- The project shows how raw sales data can be transformed into meaningful business insights.
+ The project shows how raw sales data can be transformed into meaningful business insights.
 
 ### AUTHOR
 Shanti Kumari Verma
