@@ -3,9 +3,18 @@
 ## Overview
 This project focuses on analyzing sales data using SQL to extract actionable business insights and support data-driven decision-making. The analysis covers customer behavior, product performance, and overall sales trends.
 
+**Project Status:** Completed
+
+
 ## Tools Used
 - SQL (MySQL / PostgreSQL / SQLite)
 - DB Browser / DBeaver
+
+## Key Skills Demonstrated
+- SQL Joins and Aggregations
+- Business-Oriented Data Analysis
+- Data Modeling and Relationships
+- Insight Generation
 
 ## Database Setup
 - **Database Name:** `sales_db`
@@ -79,8 +88,8 @@ LIMIT 5;
 - Sales trends can be used for future forecasting and planning.
 ## How to Run the Project
 
-1. Open your SQL tool (MySQL / PostgreSQL / SQLite).
-2. Create the database:
+### 1. Open your SQL tool (MySQL / PostgreSQL / SQLite).
+### 2. Create the database:
 ```sql
 CREATE DATABASE sales_db;
 USE sales_db;
@@ -108,6 +117,13 @@ CREATE TABLE orders (
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
+
+
+```
+
+### 3. Insert Sample Data
+```sql
+
 INSERT INTO customers (customer_id, name, contact) VALUES
 (1, 'Amit Sharma', 'amit@gmail.com'),
 (2, 'Neha Verma', 'neha@gmail.com'),
@@ -122,24 +138,42 @@ INSERT INTO products (product_id, product_name, category, stock, price) VALUES
 (1003, 3, 103, 1, 7000, '2024-01-15'),
 (1004, 1, 104, 10, 100, '2024-01-18'),
 (1005, 2, 101, 1, 55000, '2024-01-20');
+
+
+```
+
+## SQL Analysis Queries
+### View All Data
+```sql 
 SELECT * FROM customers;
 SELECT * FROM products;
 SELECT * FROM orders;
--- Total sales by category
+```
+
+### Total sales by category
+```sql
+
 SELECT 
     p.category,
     SUM(o.price * o.quantity) AS total_sales
 FROM orders o
 JOIN products p ON o.product_id = p.product_id
 GROUP BY p.category;
--- Orders per customer
+```
+
+### Orders per customer
+```sql
+
 SELECT 
     c.name,
     COUNT(o.order_id) AS total_orders
 FROM orders o
 JOIN customers c ON o.customer_id = c.customer_id
 GROUP BY c.name;
--- Top 5 products
+```
+
+### Top 5 products
+```sql
 SELECT 
     p.product_name,
     SUM(o.quantity) AS total_sold
@@ -151,12 +185,12 @@ LIMIT 5;
 
 ```
 
-### CONCLUSION
+## CONCLUSION
  This project demonstrates the practical use of SQL for real-world business analysis.
 
  It covers essential SQL concepts such as data retrieval, joins, and aggregations.
 
  The project shows how raw sales data can be transformed into meaningful business insights.
 
-### AUTHOR
+## AUTHOR
 Shanti Kumari Verma
